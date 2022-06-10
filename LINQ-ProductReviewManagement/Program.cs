@@ -32,10 +32,22 @@ class program
         reviewList.Add(new ProductReview() { ProductId = 23, UserId = 9, Rating = 4, Review = "Good", IsLike = true });
         reviewList.Add(new ProductReview() { ProductId = 24, UserId = 9, Rating = 5, Review = "Best", IsLike = true });
         reviewList.Add(new ProductReview() { ProductId = 25, UserId = 9, Rating = 5, Review = "Best", IsLike = true });
-        foreach (var item in reviewList)
+        bool check = true;
+        Operations operations = new Operations();
+        Console.WriteLine("1.Display Product Review\n2.Get top 3 Records");
+        while (check)
         {
-            Console.WriteLine(item.ProductId + "\t" + item.UserId + "\t" + item.Rating + "\t" + item.Review + "\t" + item.IsLike);
-            Console.WriteLine(" ");
+            Console.WriteLine("choose an option to execute");
+            int option = Convert.ToInt32(Console.ReadLine());
+            switch (option)
+            {
+                case 1:
+                    operations.Display(reviewList);
+                    break;
+                case 2:
+                    operations.GetTop3Records(reviewList);
+                    break;
+            }
         }
     }
 }
