@@ -60,7 +60,10 @@ class program
                     operations.SkipTop5Records(reviewList);
                     break;
                 case 7:
-                    operations.CreateDataTable();
+                    operations.CreateDataTable(reviewList);
+                    break;
+                case 8:
+                    operations.RetriveRecordsForIsTrue(reviewList);
                     break;
             }
         }
