@@ -34,7 +34,7 @@ namespace LINQ_ProductReviewManagement
                 Console.WriteLine(item.ProductID + " " + item.Count);
             }
         }
-        public void RetriveProductIDAndReview(List<ProductReview> list)
+        public void RetriveProductIDAndReviewOfAllRecords(List<ProductReview> list)
         {
             var result = list.OrderBy(x => x.ProductId).Select(x => new { productId = x.ProductId, Review = x.Review });
             foreach (var item in result)

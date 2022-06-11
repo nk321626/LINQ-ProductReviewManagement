@@ -54,7 +54,7 @@ class program
                     operations.RetriveRecordsCount(reviewList);
                     break;
                 case 5:
-                    operations.RetriveProductIDAndReview(reviewList);
+                    operations.RetriveProductIDAndReviewOfAllRecords(reviewList);
                     break;
                 case 6:
                     operations.SkipTop5Records(reviewList);
