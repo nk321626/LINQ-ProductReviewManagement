@@ -59,6 +59,9 @@ class program
                 case 6:
                     operations.SkipTop5Records(reviewList);
                     break;
+                case 7:
+                    operations.CreateDataTable();
+                    break;
             }
         }
     }
