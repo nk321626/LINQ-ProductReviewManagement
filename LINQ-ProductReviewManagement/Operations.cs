@@ -10,11 +10,13 @@ namespace LINQ_ProductReviewManagement
     public class Operations
     {
         DataTable dataTable = new DataTable();
+        //Create Method to Get Top3 from Records (UC1)
         public void GetTop3Records(List<ProductReview> list)
         {
             var result = list.OrderByDescending(x => x.Rating).Take(3).ToList();
             Display(result);
         }
+        //Create Method to Display Records (UC2)
         public void Display(List<ProductReview> list)
         {
             foreach (var item in list)
@@ -23,11 +25,13 @@ namespace LINQ_ProductReviewManagement
                 Console.WriteLine(" ");
             }
         }
+        //Create Method to Retrive Records with rating and Product ID (UC3)
         public void RetriveRecordsWithRatingAndProductID(List<ProductReview> list)
         {
             var result = list.Where(x => x.Rating > 3 && (x.ProductId == 1 || x.ProductId == 4 || x.ProductId == 9)).Take(3).ToList();
             Display(result);
         }
+        //Create Method to Retrive Records Count of review (UC4)
         public void RetriveRecordsCount(List<ProductReview> list)
         {
             var result = list.GroupBy(x => x.ProductId).Select(x => new { ProductID = x.Key, Count = x.Count() });
@@ -36,6 +40,7 @@ namespace LINQ_ProductReviewManagement
                 Console.WriteLine(item.ProductID + " " + item.Count);
             }
         }
+        //Create Method to Retrive Product ID And Review Of AllRecords (UC5)
         public void RetriveProductIDAndReviewOfAllRecords(List<ProductReview> list)
         {
             var result = list.OrderBy(x => x.ProductId).Select(x => new { productId = x.ProductId, Review = x.Review });
@@ -44,11 +49,13 @@ namespace LINQ_ProductReviewManagement
                 Console.WriteLine(item.productId + " " + item.Review);
             }
         }
+        //Create Method to Skip Top 5 (UC6)
         public void SkipTop5Records(List<ProductReview> list)
         {
             var result = list.OrderBy(x => x.Rating).Skip(5).ToList();
             Display(result);
         }
+        //Create Method to create table (UC8)
         public void CreateDataTable(List<ProductReview> list)
         {
             //Adding columns to data table and their type
@@ -69,6 +76,7 @@ namespace LINQ_ProductReviewManagement
                 Console.WriteLine("ProductID: {0}\t UserID: {1}\t Review: {2}\t Rating: {3}\t IsLike: {4}\t", row[0], row[1], row[2], row[3], row[4]);
             }
         }
+        //Create Method to Retrive Records for is True (UC9)
         public void RetriveRecordsForIsTrue(List<ProductReview> list)
         {
             CreateDataTable(list);
@@ -79,6 +87,7 @@ namespace LINQ_ProductReviewManagement
                 Console.WriteLine($"{row["ProductId"]},  {row["UserId"]},  {row["Rating"]},  {row["Review"]},  {row["IsLike"]}");
             }
         }
+        //Create Method to Average Rating (UC10)
         public void AverageRating(List<ProductReview> list)
         {
             var result = list.GroupBy(x => x.ProductId).Select(x => new { productId = x.Key, Rating = x.Average(t => t.Rating) });
@@ -87,9 +96,19 @@ namespace LINQ_ProductReviewManagement
                 Console.WriteLine(item.productId + " " + item.Rating);
             }
         }
+        //Create Method to Get Record For Nice Review (UC11)
         public void GetRecordForNiceReview(List<ProductReview> list)
         {
             var result = (from productReviews in list where productReviews.Review == "Nice" select productReviews);
+            foreach (var data in result)
+            {
+                Console.WriteLine("ProductID:- " + data.ProductId + " " + "UserID:- " + data.UserId + " " + "Rating:- " + data.Rating + " " + "Review:- " + data.Review + " " + "IsLike:- " + data.IsLike);
+            }
+        }
+        //create Method to Get Record for User10 (UC12)
+        public void GetRecordsForUser10(List<ProductReview> list)
+        {
+            var result = (from productReviews in list where productReviews.UserId == 10 select productReviews).OrderBy(x => x.Rating);
             foreach (var data in result)
             {
                 Console.WriteLine("ProductID:- " + data.ProductId + " " + "UserID:- " + data.UserId + " " + "Rating:- " + data.Rating + " " + "Review:- " + data.Review + " " + "IsLike:- " + data.IsLike);
