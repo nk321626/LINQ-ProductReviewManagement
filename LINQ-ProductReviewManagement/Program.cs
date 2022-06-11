@@ -34,7 +34,7 @@ class program
         reviewList.Add(new ProductReview() { ProductId = 25, UserId = 9, Rating = 5, Review = "Best", IsLike = true });
         bool check = true;
         Operations operations = new Operations();
-        Console.WriteLine("1.Display Product Review\n2.Get top 3 Records\n3.Retrive Records with Rating>3 and Product Id=1,4,9\n4.Retrive Records count\n5.Retrive ProductID and Review\n6.Skip Top 5 Records\n7.Create and display data table\n8.Retrive records of Is Like True\n9.Average Rating");
+        Console.WriteLine("1.Display Product Review\n2.Get top 3 Records\n3.Retrive Records with Rating>3 and Product Id=1,4,9\n4.Retrive Records count\n5.Retrive ProductID and Review\n6.Skip Top 5 Records\n7.Create and display data table\n8.Retrive records of Is Like True\n9.Average Rating\n10.Get records of nice review");
         while (check)
         {
             Console.WriteLine("choose an option to execute");
@@ -67,6 +67,9 @@ class program
                     break;
                 case 9:
                     operations.AverageRating(reviewList);
+                    break;
+                case 10:
+                    operations.GetRecordForNiceReview(reviewList);
                     break;
             }
         }
